@@ -1,14 +1,15 @@
-# userwsjwtswagger
+# Registro de usuarios e inicio de sesion usando JWT
 Rest api para creacion y autenticacion de usuarios mediante JWT.
 Esta api fue creada usando spring boot, H2, jpa , JWT y Swagger.
 
-1) para ver las tablas y sus valores peude ingresar a la url http://localhost:8090/h2-ui/  y cambiar el valor del campo "JDBC URL" por jdbc:h2:mem:testdb
-y dar click en el boton "conectar".
-Ahi se pueden ver los roles, usuarios, usuarios por rol y telefonos, en la tablas ROLES,USERS,USERS_ROLES y PHONES respectivamente.
-Para ver el contenido de cada tabla puede dar clic en el nombre de la tabla y dar click sobre el boton Run. una vez haya visto lo que requiere ver de dicha tabla debe dar clic en el boton clear para limpiar la consulta antes de volver a dar click en otra tabla que quiera ver.
+1)Para ver las tablas y sus valores peude ingresar a la url http://localhost:8090/h2-ui/  y cambiar el valor del campo "JDBC URL" por jdbc:h2:mem:testdb
+y dar click en el boton "conectar".<br>
+Ahi se pueden ver los roles, usuarios, usuarios por rol y telefonos, en la tablas ROLES,USERS,USERS_ROLES y PHONES respectivamente.<br>
+Para ver el contenido de cada tabla puede dar clic en el nombre de la tabla y dar click sobre el boton Run. <br>
+una vez haya visto lo que requiere ver de dicha tabla debe dar clic en el boton clear para limpiar la consulta antes de volver a dar click en otra tabla que quiera ver.<br>
 
 2)Registro de usuarios: crea un usuario con el username:name@test.com y password:M2test y rol USER
-NOTA: Todos los usuarios nuevos se crean con rol USER.
+NOTA: Todos los usuarios nuevos se crean con rol USER.<br>
 peticion:curl -X POST "http://localhost:8090/auth/signup" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"email\": \"name@test.com\", \"name\": \"name\", \"password\": \"M2test\", \"phones\": [ { \"citycode\": \"1\", \"contrycode\": \"20\", \"number\": \"3002108154\" } ]}"<br>
 Status:200<br>
 resultado:{
@@ -33,6 +34,7 @@ Resultado:{
   "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYW1lQHRlc3QuY29tIiwiaWF0IjoxNjgxNjc2MDk3LCJleHAiOjE2ODE2Nzk2OTd9.FXOeqW9mNdIw9xYGspWaZuK2veOkK0YFNiorW5ZFUwLagdgVNA7f93WHPT2t9hX06ChGGwMJ4Bvc3iE65xLIvw",
   "active": true
 }<br>
+
 4)Probar que las rutas protegidas y la publica tengas sus correspondientes accesos dependiendo de si está autenticado o no y el rol.
 4.1)Probar rutas sin autenticarse
 4.1.1) Ruta GET http://localhost:8090/api/admin<br>
@@ -233,20 +235,20 @@ Puede testear el inicio de sesion usando loas username y contraseñas indicadas 
 5.2.5)Revise el apartado Response Body para comprobar el resultado.<br>
 5.1.6)Si inició sesion correctamente puede copiar el token para usarlo probando las rutas protegidas.<br>
 
-5.3)Probar las rutas protegidas. para probarlas vaya a la seccion Prueba de roles Api Rest Controller
-5.3.1)Pruebe todas las rutas sin autenticacion
-5.1.2)De click en la ruta que quiera probar
-5.2.3)De click en el botón "Try it out".
-5.2.4)De click en el botón "Execute". verifique el resultado.
+5.3)Probar las rutas protegidas. para probarlas vaya a la seccion Prueba de roles Api Rest Controller<br>
+5.3.1)Pruebe todas las rutas sin autenticacion<br>
+5.1.2)De click en la ruta que quiera probar<br>
+5.2.3)De click en el botón "Try it out".<br>
+5.2.4)De click en el botón "Execute". verifique el resultado.<br>
 
-5.4)Probar las rutas con autenticacion. para probarlas vaya a la seccion Prueba de roles Api Rest Controller.
-Para esto necesitará un toke, el cual obtuvo al iniciar sesion o al crear un usuario.
-5.4.1)Copie el token obtenido al iniciar sesion o crear un usuario.
-5.4.2)Vaya a la parte superior y da click en el botón "Authorize".
-5.4.3)En la caja de texto Value escriba la palabra Bearer seguida de un espacio y el valor del token, por ejemplo 
-Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYW1lQHRlc3QuY29tIiwiaWF0IjoxNjgxNjc1OTE1LCJleHAiOjE2ODE2Nzk1MTV9.fop32GgvSGADp6xH4XgnHxuEH8-Gv_JF1mH-IcP_yXgue8JN0PHkCvmYdE2e2o2x1KG6rKPQ6WsniW6DR0eJyw
-NOTA: Recuerde que este token no le servirá porque en el momento de usarlo ya estará expirado.
-5.4.4)Vaya a la ruta que desee probar y e da click.
-5.4.5)De click en el botón "Try it out".
-5.4.5)Observe el apartado Response Body y verifique el resultado.
-5.4.6)Puede repetir los mismo pasos con todas las rutas y con todos los usuarios que desee.
+5.4)Probar las rutas con autenticacion. para probarlas vaya a la seccion Prueba de roles Api Rest Controller.<br>
+Para esto necesitará un toke, el cual obtuvo al iniciar sesion o al crear un usuario.<br>
+5.4.1)Copie el token obtenido al iniciar sesion o crear un usuario.<br>
+5.4.2)Vaya a la parte superior y da click en el botón "Authorize".<br>
+5.4.3)En la caja de texto Value escriba la palabra Bearer seguida de un espacio y el valor del token, por ejemplo <br>
+Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYW1lQHRlc3QuY29tIiwiaWF0IjoxNjgxNjc1OTE1LCJleHAiOjE2ODE2Nzk1MTV9.fop32GgvSGADp6xH4XgnHxuEH8-Gv_JF1mH-IcP_yXgue8JN0PHkCvmYdE2e2o2x1KG6rKPQ6WsniW6DR0eJyw<br>
+NOTA: Recuerde que este token no le servirá porque en el momento de usarlo ya estará expirado.<br>
+5.4.4)Vaya a la ruta que desee probar y e da click.<br>
+5.4.5)De click en el botón "Try it out".<br>
+5.4.5)Observe el apartado Response Body y verifique el resultado.<br>
+5.4.6)Puede repetir los mismo pasos con todas las rutas y con todos los usuarios que desee.<br>
