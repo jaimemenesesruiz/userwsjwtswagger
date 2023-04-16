@@ -1,6 +1,6 @@
-# Registro de usuarios e inicio de sesion usando JWT
-Rest api para creacion y autenticacion de usuarios mediante JWT.
-Esta api fue creada usando spring boot, H2, jpa , JWT y Swagger.
+# Registro de usuarios e inicio de sesion usando JWT<br>
+Rest api para creacion y autenticacion de usuarios mediante JWT.<br>
+Esta api fue creada usando spring boot, H2, jpa , JWT y Swagger.<br>
 
 1)Para ver las tablas y sus valores peude ingresar a la url http://localhost:8090/h2-ui/  y cambiar el valor del campo "JDBC URL" por jdbc:h2:mem:testdb
 y dar click en el boton "conectar".<br>
@@ -8,12 +8,12 @@ Ahi se pueden ver los roles, usuarios, usuarios por rol y telefonos, en la tabla
 Para ver el contenido de cada tabla puede dar clic en el nombre de la tabla y dar click sobre el boton Run. <br>
 una vez haya visto lo que requiere ver de dicha tabla debe dar clic en el boton clear para limpiar la consulta antes de volver a dar click en otra tabla que quiera ver.<br>
 
-2)Registro de usuarios: crea un usuario con el username:name@test.com y password:M2test y rol USER
+2)Registro de usuarios: crea un usuario con el username:name@test.com y password:M2test y rol USER<br>
 NOTA: Todos los usuarios nuevos se crean con rol USER.<br>
 peticion:curl -X POST "http://localhost:8090/auth/signup" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"email\": \"name@test.com\", \"name\": \"name\", \"password\": \"M2test\", \"phones\": [ { \"citycode\": \"1\", \"contrycode\": \"20\", \"number\": \"3002108154\" } ]}"<br>
 Status:200<br>
-resultado:{
-  "id": "103f725f-e402-461b-8722-bf4aff7753b0",
+resultado:{<br>
+  "id": "103f725f-e402-461b-8722-bf4aff7753b0",<br>
   "created": "Sun Apr 16 15:11:54 COT 2023",
   "modified": "null",
   "lastLogin": "Sun Apr 16 15:11:54 COT 2023",
