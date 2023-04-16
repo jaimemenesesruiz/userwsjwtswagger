@@ -9,7 +9,7 @@ Para ver el contenido de cada tabla puede dar clic en el nombre de la tabla y da
 
 2)Registro de usuarios: crea un usuario con el username:name@test.com y password:M2test y rol USER
 NOTA: Todos los usuarios nuevos se crean con rol USER.
-peticion:curl -X POST "http://localhost:8090/auth/signup" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"email\": \"name@test.com\", \"name\": \"name\", \"password\": \"M2test\", \"phones\": [ { \"citycode\": \"1\", \"contrycode\": \"20\", \"number\": \"3002108154\" } ]}"
+peticion:curl -X POST "http://localhost:8090/auth/signup" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"email\": \"name@test.com\", \"name\": \"name\", \"password\": \"M2test\", \"phones\": [ { \"citycode\": \"1\", \"contrycode\": \"20\", \"number\": \"3002108154\" } ]}"<br>
 Status:200
 resultado:{
   "id": "103f725f-e402-461b-8722-bf4aff7753b0",
