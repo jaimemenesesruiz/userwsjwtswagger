@@ -1,6 +1,6 @@
 package com.nisum.userws.services;
 
-import com.nisum.userws.models.User;
+import com.nisum.userws.entities.User;
 
 public interface UserService {
     public Boolean existsByEmail(String email);
@@ -9,5 +9,4 @@ public interface UserService {
 
     public User save(User userRequestDto);
 
-    public void updateTokenUsername(String token, String username);
 }

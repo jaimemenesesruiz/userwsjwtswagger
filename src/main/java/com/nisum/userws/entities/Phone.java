@@ -1,4 +1,4 @@
-package com.nisum.userws.models;
+package com.nisum.userws.entities;
 
 import lombok.*;
 
@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "phones")
 public class Phone {

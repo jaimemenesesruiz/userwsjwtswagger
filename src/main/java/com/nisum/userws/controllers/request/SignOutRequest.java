@@ -1,4 +1,4 @@
-package com.nisum.userws.utils.request;
+package com.nisum.userws.controllers.request;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

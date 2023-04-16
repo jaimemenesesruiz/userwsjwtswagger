@@ -1,4 +1,4 @@
-package com.nisum.userws.models;
+package com.nisum.userws.entities;
 
 public enum ERole {
     ROLE_USER,

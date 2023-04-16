@@ -1,6 +1,6 @@
 package com.nisum.userws.controllers;
 
-import com.nisum.userws.utils.response.MessageResponse;
+import com.nisum.userws.controllers.response.MessageResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/test")
-@Api(tags = "Prueba")
-public class TestRestController {
+@RequestMapping("/api")
+@Api(tags = "Prueba de roles")
+public class ApiRestController {
 
     @GetMapping("/all")
     @ApiOperation(value = "acceso publico", authorizations = {@Authorization(value = "jwtToken")})

@@ -1,8 +1,8 @@
 package com.nisum.userws.advice;
 
 import com.nisum.userws.exception.ApiException;
-import com.nisum.userws.utils.response.MessageResponse;
-import com.nisum.userws.utils.security.AuthTokenFilter;
+import com.nisum.userws.controllers.response.MessageResponse;
+import com.nisum.userws.security.AuthTokenFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
-import java.time.LocalDateTime;
 @RestControllerAdvice
 public class ControllerAdvice {
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthTokenFilter.class);

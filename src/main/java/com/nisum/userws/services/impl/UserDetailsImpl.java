@@ -1,7 +1,7 @@
 package com.nisum.userws.services.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nisum.userws.models.User;
+import com.nisum.userws.entities.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

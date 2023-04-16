@@ -1,17 +1,16 @@
-package com.nisum.userws.utils.security;
+package com.nisum.userws.security;
 
 import com.nisum.userws.services.impl.UserDetailsImpl;
 import io.jsonwebtoken.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 @Component
+@Log
 public class JwtUtils {
-    private static final Logger LOGGER = LoggerFactory.getLogger(JwtUtils.class);
 
     @Value("${userws.app.jwtSecret}")
     private String jwtSecret;
@@ -41,15 +40,15 @@ public class JwtUtils {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
             return true;
         } catch (SignatureException e) {
-            LOGGER.error("Firma del token Invalida: {}", e.getMessage());
+            log.severe("Firma del token Invalida: {}"+ e.getMessage());
         } catch (MalformedJwtException e) {
-            LOGGER.error("Token Invalido: {}", e.getMessage());
+            log.severe("Token Invalido: " + e.getMessage());
         } catch (ExpiredJwtException e) {
-            LOGGER.error("Token ha expirado: {}", e.getMessage());
+            log.severe("Token ha expirado: " + e.getMessage());
         } catch (UnsupportedJwtException e) {
-            LOGGER.error("Token ha sido alterado: {}", e.getMessage());
+            log.severe("Token ha sido alterado: " + e.getMessage());
         } catch (IllegalArgumentException e) {
-            LOGGER.error("Token esta vacío: {}", e.getMessage());
+            log.severe("Token esta vacío: " + e.getMessage());
         }
         return false;
     }

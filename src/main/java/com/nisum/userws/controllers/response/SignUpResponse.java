@@ -1,4 +1,4 @@
-package com.nisum.userws.utils.response;
+package com.nisum.userws.controllers.response;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

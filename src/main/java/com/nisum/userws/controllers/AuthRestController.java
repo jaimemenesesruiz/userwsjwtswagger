@@ -1,17 +1,17 @@
 package com.nisum.userws.controllers;
 
-import com.nisum.userws.models.ERole;
-import com.nisum.userws.models.Phone;
-import com.nisum.userws.models.Role;
-import com.nisum.userws.models.User;
-import com.nisum.userws.repositories.RoleRepository;
+import com.nisum.userws.entities.ERole;
+import com.nisum.userws.entities.Phone;
+import com.nisum.userws.entities.Role;
+import com.nisum.userws.entities.User;
+import com.nisum.userws.services.RoleService;
 import com.nisum.userws.services.UserService;
 import com.nisum.userws.services.impl.UserDetailsImpl;
-import com.nisum.userws.utils.request.SignInRequest;
-import com.nisum.userws.utils.request.SignUpRequest;
-import com.nisum.userws.utils.response.MessageResponse;
-import com.nisum.userws.utils.response.SignUpResponse;
-import com.nisum.userws.utils.security.JwtUtils;
+import com.nisum.userws.controllers.request.SignInRequest;
+import com.nisum.userws.controllers.request.SignUpRequest;
+import com.nisum.userws.controllers.response.MessageResponse;
+import com.nisum.userws.controllers.response.SignUpResponse;
+import com.nisum.userws.security.JwtUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -34,19 +34,19 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/auth")
-@Api(tags = "Autenticación")
+@Api(tags = "Autenticacion")
 public class AuthRestController {
     private final AuthenticationManager authenticationManager;
     private final UserService userService;
 
-    private final RoleRepository roleRepository;
+    private final RoleService roleService;
     private final PasswordEncoder encoder;
     private final JwtUtils jwtUtils;
 
-    public AuthRestController(AuthenticationManager authenticationManager, UserService userService, PasswordEncoder encoder, RoleRepository roleRepository, JwtUtils jwtUtils) {
+    public AuthRestController(AuthenticationManager authenticationManager, UserService userService, PasswordEncoder encoder, RoleService roleService, JwtUtils jwtUtils) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
-        this.roleRepository = roleRepository;
+        this.roleService = roleService;
         this.encoder = encoder;
         this.jwtUtils = jwtUtils;
     }
@@ -55,9 +55,9 @@ public class AuthRestController {
     @PostMapping(value = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(
             value = "Registro de usuarios",
-            notes = "Servicio que nos crea un usuario con rol USER")
+            notes = "Servicio que crea un usuario con rol USER")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Usuario creado correctamente"),
+            @ApiResponse(code = 201, message = "Usuario creado correctamente"),
             @ApiResponse(code = 400, message = "Campos Inválidos")
     })
     public ResponseEntity<Object> signup(@Valid @RequestBody(required = false) SignUpRequest userDto, BindingResult result) {
@@ -79,12 +79,12 @@ public class AuthRestController {
 
         Set<Role> roles = new HashSet<>();
 
-        var userRole = roleRepository.findByName(ERole.ROLE_USER)
+        var userRole = roleService.findByName(ERole.ROLE_USER)
                 .orElse(null);
         if (userRole == null) {
             var role = new Role();
             role.setName(ERole.ROLE_USER);
-            userRole = roleRepository.save(role);
+            userRole = roleService.save(role);
 
         }
         roles.add(userRole);

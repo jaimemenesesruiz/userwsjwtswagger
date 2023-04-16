@@ -1,4 +1,4 @@
-package com.nisum.userws.models;
+package com.nisum.userws.entities;
 
 import lombok.Getter;
 import lombok.Setter;

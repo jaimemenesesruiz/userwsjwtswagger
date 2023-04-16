@@ -2,8 +2,8 @@ package com.nisum.userws.config;
 
 
 import com.nisum.userws.services.impl.UserDetailsServiceImpl;
-import com.nisum.userws.utils.security.AuthEntryPointJwt;
-import com.nisum.userws.utils.security.AuthTokenFilter;
+import com.nisum.userws.security.AuthEntryPointJwt;
+import com.nisum.userws.security.AuthTokenFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -59,7 +59,7 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
-                .antMatchers("/test/**").permitAll()
+                .antMatchers("/api/**").permitAll()
                 .antMatchers("/swagger-ui/**").permitAll()
                 .antMatchers("/h2-ui/**").permitAll()
                 .antMatchers("/configuration/**").permitAll()

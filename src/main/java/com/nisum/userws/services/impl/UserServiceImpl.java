@@ -1,6 +1,6 @@
 package com.nisum.userws.services.impl;
 
-import com.nisum.userws.models.User;
+import com.nisum.userws.entities.User;
 import com.nisum.userws.repositories.PhoneRepository;
 import com.nisum.userws.repositories.UserRepository;
 import com.nisum.userws.services.UserService;
@@ -34,18 +34,11 @@ public class UserServiceImpl  implements UserService {
                 p.setUser(result);
                 phoneRepository.save(p);
                     }
-
-
             );
             return result;
         }else{//update
             return userRepository.save(userRequestDto);
         }
-    }
-
-    @Override
-    public void updateTokenUsername(String token, String username) {
-
     }
 }
 
