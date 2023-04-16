@@ -14,11 +14,11 @@ peticion:curl -X POST "http://localhost:8090/auth/signup" -H "accept: applicatio
 Status:200<br>
 resultado:{<br>
   "id": "103f725f-e402-461b-8722-bf4aff7753b0",<br>
-  "created": "Sun Apr 16 15:11:54 COT 2023",
-  "modified": "null",
-  "lastLogin": "Sun Apr 16 15:11:54 COT 2023",
-  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYW1lQHRlc3QuY29tIiwiaWF0IjoxNjgxNjc1OTE1LCJleHAiOjE2ODE2Nzk1MTV9.fop32GgvSGADp6xH4XgnHxuEH8-Gv_JF1mH-IcP_yXgue8JN0PHkCvmYdE2e2o2x1KG6rKPQ6WsniW6DR0eJyw",
-  "active": true
+  "created": "Sun Apr 16 15:11:54 COT 2023",<br>
+  "modified": "null",<br>
+  "lastLogin": "Sun Apr 16 15:11:54 COT 2023",<br>
+  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYW1lQHRlc3QuY29tIiwiaWF0IjoxNjgxNjc1OTE1LCJleHAiOjE2ODE2Nzk1MTV9.fop32GgvSGADp6xH4XgnHxuEH8-Gv_JF1mH-IcP_yXgue8JN0PHkCvmYdE2e2o2x1KG6rKPQ6WsniW6DR0eJyw",<br>
+  "active": true<br>
 }<br>
 
 3)inicio de sesion
@@ -26,13 +26,13 @@ NOTA:Se puede iniciar sesion con el usuario recien creado, usando el correo como
 Cuando haya iniciado sesion, debera copiar el valor del campo "token" sin incluir los caracteres ", en este ejemplo el valor es eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYW1lQHRlc3QuY29tIiwiaWF0IjoxNjgxNjc2MDk3LCJleHAiOjE2ODE2Nzk2OTd9.FXOeqW9mNdIw9xYGspWaZuK2veOkK0YFNiorW5ZFUwLagdgVNA7f93WHPT2t9hX06ChGGwMJ4Bvc3iE65xLIvw  , ese token se debe enviar en los headers de cada peticion, con el header Authorization y concatenado con la palabra Bearer y un espacio, como se ve en los numerales 4.2 en adelante.<br>
 peticion:curl -X POST "http://localhost:8090/auth/signin" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"password\": \"M2test\", \"username\": \"name@test.com\"}"
 Status:200<br>
-Resultado:{
-  "id": "103f725f-e402-461b-8722-bf4aff7753b0",
-  "created": "2023-04-16 15:11:54.746",
-  "modified": "2023-04-16 15:11:55.151",
-  "lastLogin": "2023-04-16 15:11:55.151",
-  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYW1lQHRlc3QuY29tIiwiaWF0IjoxNjgxNjc2MDk3LCJleHAiOjE2ODE2Nzk2OTd9.FXOeqW9mNdIw9xYGspWaZuK2veOkK0YFNiorW5ZFUwLagdgVNA7f93WHPT2t9hX06ChGGwMJ4Bvc3iE65xLIvw",
-  "active": true
+Resultado:{<br>
+  "id": "103f725f-e402-461b-8722-bf4aff7753b0",<br>
+  "created": "2023-04-16 15:11:54.746",<br>
+  "modified": "2023-04-16 15:11:55.151",<br>
+  "lastLogin": "2023-04-16 15:11:55.151",<br>
+  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYW1lQHRlc3QuY29tIiwiaWF0IjoxNjgxNjc2MDk3LCJleHAiOjE2ODE2Nzk2OTd9.FXOeqW9mNdIw9xYGspWaZuK2veOkK0YFNiorW5ZFUwLagdgVNA7f93WHPT2t9hX06ChGGwMJ4Bvc3iE65xLIvw",<br>
+  "active": true<br>
 }<br>
 
 4)Probar que las rutas protegidas y la publica tengas sus correspondientes accesos dependiendo de si está autenticado o no y el rol.
